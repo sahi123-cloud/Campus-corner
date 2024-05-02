@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import '../App.css';
-
+import Sidebar from "./sidebar";
+import Navbar from "./navbar";
 export default function HomeWithProducts() {
 const [products, setProducts] = React.useState([]);
 
@@ -13,10 +14,13 @@ React.useEffect(() => {
 }, []);
 
 return (
+    <>
+    <Navbar/>
+    <Sidebar/>
     <div className="product-list">
     {products.map((product) => (
         <div key={product._id} className="product-card">
-        <img src={product.image} alt={product.name} />
+        <img src={product.image} />
         <div className="product-details">
             <h2>{product.name}</h2>
             <p>{product.desc}</p>
@@ -27,5 +31,6 @@ return (
         </div>
     ))}
     </div>
+    </>
 );
 }

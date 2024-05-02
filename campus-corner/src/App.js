@@ -9,6 +9,7 @@ import Profile from "./components/profile";
 import Navbar from "./components/navbar";
 import ProductForm from "./components/sellform";
 import HomeWithProducts from "./components/homewithproducts";
+import CreatorCard from "./components/creatercard";
 
 function App() {
   return (
@@ -17,33 +18,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/home/*" element={<Home />} />
-          <Route path="/*" element={<MainContent />} />
+          <Route path="/home" element={<HomeWithProducts />} />
+          <Route path="/about" element={<CreatorCard />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/sellform" element={<ProductForm />} />
         </Routes>
       </div>
     </Router>
-  );
-}
-
-function Home() {
-  return (
-    <>
-      <Navbar />
-      <Sidebar />
-      <HomeWithProducts />
-    </>
-  );
-}
-
-function MainContent() {
-  return (
-    <Sidebar>
-      <Routes>
-        <Route path="/events" element={<Navbar><Events /></Navbar>} />
-        <Route path="/profile" element={<Navbar><Profile /></Navbar>} />
-        <Route path="/sellform" element={<ProductForm />} />
-      </Routes>
-    </Sidebar>
   );
 }
 

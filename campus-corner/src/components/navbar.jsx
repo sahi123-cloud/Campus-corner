@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <a href="#" className="hd">
-        <h1>CAMPUS CORNER</h1>
+        <h2>CAMPUS CORNER</h2>
       </a>
       <div className="search-box">
         <input type="text" placeholder="Search" />
