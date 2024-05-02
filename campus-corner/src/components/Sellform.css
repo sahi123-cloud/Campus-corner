@@ -1,7 +1,10 @@
-body {
-  display: block;
-  /* background-color: #fff; */
+* {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
+
 .cont {
   border: 1px solid black;
   padding: 10px;
@@ -15,12 +18,10 @@ img {
   font-size: 30px;
   margin-bottom: 10px;
 }
-.chi-cont h1 {
+h1 {
   text-align: center;
-  color: #ffffff;
 }
-
-.cont label {
+label {
   display: block;
   border: black;
   width: 100px;
@@ -32,7 +33,7 @@ img {
   cursor: pointer;
 }
 
-.chi-cont form {
+form {
   margin: 20px auto;
   max-width: 1200px;
   background-color: #fff;
@@ -40,9 +41,9 @@ img {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.chi-cont form input[type="text"],
-.chi-cont form input[type="number"] {
+form input[type="text"],
+form input[type="number"],
+form button {
   display: block;
   width: 95%;
   height: 2rem;
@@ -53,25 +54,51 @@ img {
   border-radius: 5px;
 }
 
-.chi-cont input[type="file"] {
+form input[type="file"] {
   display: none;
 }
 
-.chi-cont button {
-  display: block;
+form button {
   background-color: #007bff;
   color: #fff;
   border: none;
   width: 10rem;
-  height: 2rem;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   cursor: pointer;
 }
 
-.cont button:hover {
+form button:hover {
   background-color: #0056b3;
 }
+
+h2 {
+  text-align: center;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+li p {
+  margin: 5px 0;
+}
+
+li form {
+  margin-top: 10px;
+}
+
+li form button {
+  background-color: #dc3545;
+}
+
+li form button:hover {
+  background-color: #c82333;
+}
+
