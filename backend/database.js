@@ -1,15 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
-const axios=require('axios')
+const bodyParser = require('body-parser');
+
 const app = express();
+const port = 5000;
+
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
+app.use(cors({ origin: 'http://localhost:3000' }));
+
 
 // Hardcoded MongoDB connection URI
 const uri = 'mongodb+srv://21pa1a1256:21pa1a1256@cluster0.lhxsa2x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect()
   .then(() => console.log('MongoDB connected'))
@@ -39,7 +47,19 @@ client.connect()
       res.status(500).json({ error: 'An error occurred while registering user.' });
     }
   });
-  
+
+  app.post('/upload-image', async (req, res) => {
+    try {
+      const { base64 } = req.body;
+      const database = client.db('react');
+      const collection = database.collection('images');
+      await collection.insertOne({ image: base64 });
+      res.status(200).json({ status: 'ok' });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      res.status(500).json({ status: 'error', data: error });
+    }
+  });
 
 app.post('/login', async (req, res) => {
   try {
@@ -59,11 +79,10 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ error: 'An error occurred while logging in.' });
   }
 });
-// Your existing server setup and imports...
 
 app.post('/create', async (req, res) => {
   try {
-    const db = client.db('reactt');
+    const db = client.db('react');
     const collection = db.collection('products');
     const { name, price, desc, stuName, depName, phnNo, image } = req.body; 
 
@@ -85,7 +104,9 @@ app.post('/create', async (req, res) => {
   }
 });
 
+// Existing code
 
+// Assuming 'collection' refers to the collection where products are stored
 app.get('/products', async (req, res) => {
   try {
     const db = client.db('react');
@@ -101,8 +122,10 @@ app.get('/products', async (req, res) => {
   }
 });
 
+// Existing code
 
 
-app.listen(5000, () => {
-  console.log("Server is running on port: 5000");
+
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });

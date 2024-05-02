@@ -2,13 +2,15 @@ import React, { Children, useState } from 'react'
 import {FaThList,FaRegCalendarCheck,FaHome,FaUser}from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineLogout } from "react-icons/md";
+import { RiTeamFill } from "react-icons/ri";
+import "./Sidebar.css";
 export default function Sidebar({children}) {
   const[isOpen,setIsOpen]=useState(false)
   const toggle=()=>setIsOpen(!isOpen)
     const menuItem=[
       {
-      Path:'/',
-      name:"Home",
+      Path:'/home',
+      name:"HomeWithProducts",
       icon:<FaHome />
     },
     {
@@ -16,6 +18,11 @@ export default function Sidebar({children}) {
       name:"Events",
       icon:<FaRegCalendarCheck />
     },
+    {
+      Path:'/about',
+      name:"Creators",
+      icon:<RiTeamFill />
+    },
     {
       Path:'/profile',
       name:"Profile",
