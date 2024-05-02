@@ -39,7 +39,7 @@ export default function Sidebar({children}) {
         </div>
         {
           menuItem.map((item,index)=>(
-          <NavLink to={item.Path} key={index} className="link" activeclassName="active">
+          <NavLink to={item.Path} key={index} className="link" activeclassname="active">
             <div className='icon'>{item.icon}</div>
             <div style={{display: isOpen ? "block" : "None"}} className="text">{item.name}</div>
           </NavLink>
