@@ -1,4 +1,5 @@
 import React from "react";
+import "./createcard.css";
 
 const creatorsData = [
   {
@@ -84,9 +85,11 @@ function CreatorCard({ creator }) {
 function App() {
   return (
     <div className="diffSection" id="team_section">
-      {/* <center>
-        <p className="section-title">We're the Creators</p>
-      </center> */}
+      <div className="section-cont">
+        <center>
+          <p className="section-title">We're the Creators</p>
+        </center>
+      </div>
       <div className="totalcard">
         {creatorsData.map((creator, index) => (
           <CreatorCard key={index} creator={creator} />
